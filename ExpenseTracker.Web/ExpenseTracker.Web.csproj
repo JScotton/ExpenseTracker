@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="client-app\src\lib\auth.ts" />
+    <None Remove="client-app\src\middleware.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\lib\auth.ts" />
+    <TypeScriptCompile Include="client-app\src\middleware.ts" />
+  </ItemGroup>
+
 </Project>
