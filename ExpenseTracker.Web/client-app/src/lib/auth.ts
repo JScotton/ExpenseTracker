@@ -11,6 +11,9 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     secret: process.env.NEXTAUTH_SECRET,
+    session: {
+        strategy: "jwt",
+    },
 };
 
 export const auth = () => NextAuth(authOptions);
