@@ -14,22 +14,6 @@ export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
-    callbacks: {
-        async jwt({ token, account, profile }) {
-            // Add access token and other useful info to token
-            if (account) {
-                token.accessToken = account.access_token;
-                token.idToken = account.id_token;
-            }
-            return token;
-        },
-        async session({ session, token }) {
-            // Make the access token available to the client
-            session.accessToken = token.accessToken as string;
-            session.idToken = token.idToken as string;
-            return session;
-        },
-    },
 };
 
 export const auth = () => NextAuth(authOptions);
