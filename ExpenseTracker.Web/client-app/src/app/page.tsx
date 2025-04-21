@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth"; // make sure this path matches your pr
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
+    const accessToken = session?.accessToken;
 
     return (
         <div className={styles.page}>
@@ -24,11 +25,13 @@ export default async function Home() {
                     <li>Save and see your changes instantly.</li>
                 </ol>
 
-                {/* Add login/logout buttons */}
                 <div style={{ marginTop: "2rem" }}>
                     {session ? (
                         <>
                             <p>Welcome, {session.user?.name}</p>
+                            {accessToken && (
+                                <p><strong>Access Token:</strong> {accessToken}</p>
+                            )}
                             <form action="/api/auth/signout" method="post">
                                 <button type="submit">Logout</button>
                             </form>
@@ -39,6 +42,22 @@ export default async function Home() {
                         </form>
                     )}
                 </div>
+
+                {/* Add login/logout buttons */}
+                {/*<div style={{ marginTop: "2rem" }}>*/}
+                {/*    {session ? (*/}
+                {/*        <>*/}
+                {/*            <p>Welcome, {session.user?.name}</p>*/}
+                {/*            <form action="/api/auth/signout" method="post">*/}
+                {/*                <button type="submit">Logout</button>*/}
+                {/*            </form>*/}
+                {/*        </>*/}
+                {/*    ) : (*/}
+                {/*        <form action="/api/auth/signin" method="post">*/}
+                {/*            <button type="submit">Login</button>*/}
+                {/*        </form>*/}
+                {/*    )}*/}
+                {/*</div>*/}
 
                 <div className={styles.ctas}>
                     <a

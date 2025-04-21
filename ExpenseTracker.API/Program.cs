@@ -1,6 +1,9 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
+
 namespace ExpenseTracker.API
-{
+{    
     public class Program
     {
         public static void Main(string[] args)
@@ -8,6 +11,13 @@ namespace ExpenseTracker.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            // Add Authentication
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAdB2C"));
+
+            // Add Authorization
+            builder.Services.AddAuthorization();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +35,7 @@ namespace ExpenseTracker.API
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
