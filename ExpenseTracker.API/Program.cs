@@ -1,5 +1,7 @@
 
+using ExpenseTracker.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 
 namespace ExpenseTracker.API
@@ -18,6 +20,10 @@ namespace ExpenseTracker.API
 
             // Add Authorization
             builder.Services.AddAuthorization();
+
+            // Add DB Context with Managed Identity Authentication
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
