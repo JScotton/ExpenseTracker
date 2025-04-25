@@ -41,24 +41,7 @@ export default async function Home() {
                             <button type="submit">Login</button>
                         </form>
                     )}
-                </div>
-
-                {/* Add login/logout buttons */}
-                {/*<div style={{ marginTop: "2rem" }}>*/}
-                {/*    {session ? (*/}
-                {/*        <>*/}
-                {/*            <p>Welcome, {session.user?.name}</p>*/}
-                {/*            <form action="/api/auth/signout" method="post">*/}
-                {/*                <button type="submit">Logout</button>*/}
-                {/*            </form>*/}
-                {/*        </>*/}
-                {/*    ) : (*/}
-                {/*        <form action="/api/auth/signin" method="post">*/}
-                {/*            <button type="submit">Login</button>*/}
-                {/*        </form>*/}
-                {/*    )}*/}
-                {/*</div>*/}
-
+                </div>      
                 <div className={styles.ctas}>
                     <a
                         className={styles.primary}

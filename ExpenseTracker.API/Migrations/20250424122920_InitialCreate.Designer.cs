@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpenseTracker.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250422130620_InitialCreate")]
+    [Migration("20250424122920_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,6 +34,7 @@ namespace ExpenseTracker.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
